@@ -1,11 +1,11 @@
 import React from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, Linking } from 'react-native';
 import CardView from './CardView';
 import CardSection from './CardSection';
 import Button from './Button';
 
 const AlbumDetail = ({ album }) => {
-    const { title, artist, thumbnail_image, image } = album;
+    const { title, artist, thumbnail_image, image, url } = album;
     const { thumbnailStyle, headerContentStyle, headerTextStyle, thumbnailContainerStyle, imageStyle } = styles;
 
     return (
@@ -28,7 +28,7 @@ const AlbumDetail = ({ album }) => {
             </CardSection>
 
             <CardSection>
-                <Button onPress={() => console.log(title)} />
+                <Button onPress={() => Linking.openURL(url)}>Buy Now</Button>
             </CardSection>
         </CardView>
     );
@@ -44,7 +44,8 @@ const styles = {
     },
     thumbnailStyle: {
         height: 50,
-        width: 50
+        width: 50,
+        borderRadius: 100
     },
     thumbnailContainerStyle: {
         justifyContent: 'center',
